@@ -12,8 +12,8 @@ def uppercase(s):
     """
     output = ''  # Initialize an empty string for the output
     for char in s:
-        if ord(char) >= ord('a') and ord(char) <= ord('z'):  # Check if the char is lowercase
-            output += chr(ord(char) - ord('a') + ord('A'))  # Convert the char to uppercase and append to output
+        if ord(char) >= ord('a') and ord(char) <= ord('z'):  # Check char=lower
+            output += chr(ord(char) - ord('a') + ord('A'))
         else:
             output += char  # Keep the char unchanged if it's not lowercase
     print("{:s}".format(output))  # Print the resulting uppercase string
