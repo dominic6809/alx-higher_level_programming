@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-# Iterate over ASCII values from 97 to 122 (lowercase letters range)
-# and print each character without newline, except for 'q' and 'e'
-for i in range(97, 123):
-    if chr(i) not in ['q', 'e']:
-        print(chr(i), end='')
 
-# Output will be the lowercase ASCII alphabet excluding 'q' and 'e' printed without a newline
+# Loop through ASCII values for lowercase letters
+for i in range(97, 123):
+    # Skip printing 'e' and 'q'
+    if i != 101 and i != 113:
+        # Print the character
+        print("{character}".format(character=chr(i)), end="")
