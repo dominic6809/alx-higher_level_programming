@@ -17,4 +17,24 @@ if condition:
     # code block to execute if condition is true
 else:
     # code block to execute if condition is false
+```
 
+## For Loop
+The for loop iterates over a sequence (e.g., list, tuple, string) and executes a block of code for each element in the sequence.
+```
+for element in sequence:
+    # code block to execute for each element
+```
+## While Loop
+The while loop repeats a block of code as long as a specified condition is true.
+```
+while condition:
+    # code block to execute while condition is true
+```
+## Functions
+Functions in Python are reusable blocks of code that perform a specific task. They help in organizing code, making it more modular and easier to maintain.
+```
+def function_name(parameters):
+    # code block to execute
+    return value
+```
