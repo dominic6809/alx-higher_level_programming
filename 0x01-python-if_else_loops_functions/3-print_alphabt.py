@@ -5,4 +5,4 @@ for i in range(97, 123):
     # Skip printing 'e' and 'q'
     if i != 101 and i != 113:
         # Print the character
-        print("{character}".format(character=chr(i)), end="")
+        print("{:c}".format(i), end="")
