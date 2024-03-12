@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-# Iterate over numbers from 0 to 98
-# Print each number in decimal and hexadecimal format
-for i in range(99):
-    print("{} {}".format(i, hex(i)))
 
-# Output will be numbers from 0-98 printed in decimal and hexadecimal format
+# Loop through numbers from 0 to 98
+for hex_value in range(0, 99):
+    # Print the decimal and hexadecimal representations
+    print("{:d} = 0x{:x}".format(hex_value, hex_value))
