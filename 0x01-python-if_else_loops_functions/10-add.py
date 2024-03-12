@@ -7,8 +7,8 @@ def add(a, b):
 # Test cases
 
 
-result = add(5, 3)
+result = add()
 print(f"{result:02}", end="")  # Print result with two chars without a newline
 
-result = add(-10, 20)
+result = add()
 print(f"{result:02}", end="")  # Print result with two chars without a newline
