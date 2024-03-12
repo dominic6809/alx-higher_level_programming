@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-# Print each number with two digits separated by ', ' except the last one
-# Use a single print statement for the numbers with proper formatting
-for i in range(100):
-    print("{:02d}".format(i), end=', ' if i < 99 else '\n')
+
+# Loop through numbers from 0 to 99
+for number in range(100):
+    # Check if the number is not the last one
+    if number != 99:
+        # Print the number with leading zeros and a comma
+        print("{num:02d}".format(num=number), end=", ")
+    else:
+        # Print the last number with leading zeros and a newline
+        print("{num:02d}".format(num=number), end="\n")
