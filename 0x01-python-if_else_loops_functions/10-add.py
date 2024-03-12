@@ -8,7 +8,7 @@ def add(a, b):
 
 
 result = add(5, 3)
-print(result, end="")  # Print the result without a newline
+print(f"{result:02}", end="")  # Print result with two chars without a newline
 
 result = add(-10, 20)
-print(result, end="")  # Print the result without a newline
+print(f"{result:02}", end="")  # Print result with two chars without a newline
