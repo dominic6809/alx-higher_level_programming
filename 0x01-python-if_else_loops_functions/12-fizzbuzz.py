@@ -9,20 +9,19 @@ def fizzbuzz():
         # Check if the number is a multiple of both 3 and 5
         if i % 3 == 0 and i % 5 == 0:
             print("FizzBuzz", end=" ")
-            char_count += 8  # Increment character count by len of "FizzBuzz" + a space
-        # Check if the number is a multiple of 3 only
+            char_count += 8  # Increment char count by len of "FizzBuzz" + a space
         elif i % 3 == 0:
             print("Fizz", end=" ")
-            char_count += 5  # Increment character count by len of "Fizz" + a space
+            char_count += 5  # Increment char count by len of "Fizz" + a space
         # Check if the number is a multiple of 5 only
         elif i % 5 == 0:
             print("Buzz", end=" ")
-            char_count += 5  # Increment character count by len of "Buzz" + a space
+            char_count += 5  # Increment char count by len of "Buzz" + a space
         # If the number is not a multiple of 3 or 5, print the number itself
         else:
             num_str = str(i)
             print(num_str, end=" ")
-            char_count += len(num_str) + 1  # Increment character count by len of number + a space
+            char_count += len(num_str) + 1
         
         # Check if total characters printed reaches 415
         if char_count >= 415:
