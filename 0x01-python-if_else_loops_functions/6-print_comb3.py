@@ -9,6 +9,6 @@ for i in range(0, 10):
             continue  # Skip to the next iteration if condition is met
         # Check if it's the last combination
         if i == 8 and j == 9:
-            print("{:d}{:d}".format(i, j))  # Print the combination without a comma
+            print("{:d}{:d}".format(i, j))  # Print without comma
         else:
-            print("{:d}{:d}".format(i, j), end=", ")  # Print the combination with a comma
+            print("{:d}{:d}".format(i, j), end=", ")  # Print with comma
