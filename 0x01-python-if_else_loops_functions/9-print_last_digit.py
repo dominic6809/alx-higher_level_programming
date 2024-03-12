@@ -8,10 +8,3 @@ def print_last_digit(number):
     print(last_digit)
     # Return the last digit
     return last_digit
-
-# Test cases
-
-
-print_last_digit(123)
-
-print_last_digit(-456)
