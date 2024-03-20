@@ -7,35 +7,25 @@
  */
 void print_python_bytes(PyObject *p)
 {
-	char *bytes_data;
-	long int size, i, limit;
+	long int size_of_bytes, i;
 
 	printf("[.] bytes object info\n");
-
-	/* Check if the input is a valid bytes object */
-	if (!PyBytes_Check(p))
+	if (PyBytes_CheckExact(p))
 	{
-		printf("  [ERROR] Invalid bytes object\n");
-		return;
+		size_of_bytes = PyBytes_Size(p);
+		printf("  size: %ld\n", size_of_bytes);
+		printf("  trying string: %s\n", PyBytes_AsString(p));
+		if (size_of_bytes >= 10)
+			size_of_bytes = 10;
+		else
+			size_of_bytes++;
+		printf("  first %ld bytes:", size_of_bytes);
+		for (i = 0; i < size_of_bytes; i++)
+			printf(" %02x", (int) PyBytes_AsString(p)[i] & 0xff);
+		printf("\n");
 	}
-
-	/* Obtain the size and data of the bytes object */
-	size = ((PyVarObject *)p)->ob_size;
-	bytes_data = ((PyBytesObject *)p)->ob_sval;
-
-	printf("  size: %ld\n", size);
-	printf("  trying string: %s\n", bytes_data);
-
-	/* Determine the limit for printing the bytes */
-	limit = (size >= 10) ? 10 : size;
-
-	printf("  first %ld bytes:", limit);
-
-	/* Print the first 'limit' bytes in hexadecimal format */
-	for (i = 0; i < limit; i++)
-		printf(" %02x", bytes_data[i] & 0xFF);
-
-	printf("\n");
+	else
+		printf("  [ERROR] Invalid Bytes Object\n");
 }
 
 /**
@@ -45,24 +35,21 @@ void print_python_bytes(PyObject *p)
 void print_python_list(PyObject *p)
 {
 	long int size, i;
-	PyListObject *list_obj;
-	PyObject *element;
+	PyListObject *list;
+	PyObject *obj;
 
-	size = ((PyVarObject *)p)->ob_size;
-	list_obj = (PyListObject *)p;
+	size = ((PyVarObject *)(p))->ob_size;
+	list = (PyListObject *)p;
 
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", list_obj->allocated);
+	printf("[*] Allocated = %ld\n", list->allocated);
 
-	/* Iterate over each element in the list */
 	for (i = 0; i < size; i++)
 	{
-		element = list_obj->ob_item[i];
-		printf("Element %ld: %s\n", i, Py_TYPE(element)->tp_name);
-
-		/* If the element is a bytes object, print its information */
-		if (PyBytes_Check(element))
-			print_python_bytes(element);
+		obj = ((PyListObject *)p)->ob_item[i];
+		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
+		if (PyBytes_Check(obj))
+			print_python_bytes(obj);
 	}
 }
