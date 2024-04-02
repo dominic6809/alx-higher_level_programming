@@ -2,5 +2,7 @@
 """
 Initialize the class (constructor)
 """
+
+
 class Square:
     pass
