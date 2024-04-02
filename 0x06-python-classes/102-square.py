@@ -97,18 +97,6 @@ class Square:
         """
         return self.size != other.size
 
-    def __gt__(self, other):
-        """
-        Greater than comparator.
-
-        params:
-            other (Square): Another Square object.
-
-        Returns:
-            bool: True if area is greater, False otherwise.
-        """
-        return self.size > other.size
-
     def __ge__(self, other):
         """
         Greater than or equal comparison operator.
@@ -120,3 +108,15 @@ class Square:
             bool: True if area is greater than or equal, False otherwise.
         """
         return self.size >= other.size
+
+     def __gt__(self, other):
+        """
+        Greater than comparator.
+
+        params:
+            other (Square): Another Square object.
+
+        Returns:
+            bool: True if area is greater, False otherwise.
+        """
+        return self.size > other.size
