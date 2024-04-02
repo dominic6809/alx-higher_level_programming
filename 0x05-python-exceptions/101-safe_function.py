@@ -14,6 +14,6 @@ def safe_function(fct, *args):
     try:
         result = fct(*args)
         return result
-    except (TypeError, ValueError) as error:
+    except Exception as error:
         print("Exception:", error, file=sys.stderr)
         return None
