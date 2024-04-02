@@ -3,7 +3,6 @@
 
 
 class Square:
-   
     def __init__(self, size=0):
         """initializes the square
         params:
@@ -22,7 +21,12 @@ class Square:
 
     @property
     def size(self):
-      """Retrieves the size of the square."""
+      """
+        Retrieves the size of the square.
+
+        Returns:
+            number: Size of the square.
+        """
         return self.__size
 
     @size.setter
