@@ -35,14 +35,14 @@ class Square:
 
     @position.setter
     def position(self, value):
-      """
-      Sets the position of the square.
-      
-      params:
+        """
+        Sets the position of the square.
+
+        params:
             value (tuple): Position value to set.
-            
-      Raises:
-            TypeError: If value != tuple of 2 positive integers.
+
+        Raises:
+            TypeError: If value is not a tuple of 2 positive integers.
         """
         if (not isinstance(value, tuple) or
                 len(value) != 2 or
