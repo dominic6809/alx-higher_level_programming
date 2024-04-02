@@ -51,7 +51,7 @@ class Node:
         Raises:
             TypeError: If value is not None or a Node object.
         """
-        if value is not None and not isinstance(value, Node):
+        if not isinstance(value, Node) and value is not None:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
@@ -84,7 +84,7 @@ class SinglyLinkedList:
             while (num.next_node is not None and
                     num.next_node.data < value):
                 num = num.next_node
-            new.next_node = num.next_node
+            new_node.next_node = num.next_node
             num.next_node = new_node
 
     def __str__(self):
