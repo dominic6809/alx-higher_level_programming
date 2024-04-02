@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""
-Initialize the class (constructor)
-"""
+"""Define class named Square"""
 
 
 class Square:
+     """represents a square figure"""
+    
     pass
