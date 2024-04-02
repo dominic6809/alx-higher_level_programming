@@ -6,10 +6,10 @@ that defines a square based on 0-square.py
 
 
 class Square:
-    """Constructor for Square class"""
+    """Constructor for square class"""
     def __init__(self, size):
         self.__size = size
-       """
+        """
         Private instance attribute: size
         Instantiation with size
         (no type/value verification)
