@@ -7,12 +7,12 @@ def magic_calculation(a, b):
     :param b: Integer
     :return: Result of the magic calculation
     """
-  result = 0
-    for num in range(1, 3):
+    result = 0
+    for n in range(1, 3):
         try:
-            if num > a:
+            if n > a:
                 raise Exception('Too far')
-            result += a ** b / num
+            result += a ** b / n
         except Exception:
             result = b + a
             break
