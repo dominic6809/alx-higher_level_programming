@@ -69,10 +69,10 @@ class Square:
             print("")
             return
 
-        [print("") for p in range(0, self.__position[1])]
-        for p in range(0, self.__size):
-            [print(" ", end="") for q in range(0, self.__position[0])]
-            [print("#", end="") for r in range(0, self.__size)]
+        [print("") for i in range(0, self.__position[1])]
+        for i in range(0, self.__size):
+            [print(" ", end="") for j in range(0, self.__position[0])]
+            [print("#", end="") for k in range(0, self.__size)]
             print("")
 
     def __str__(self):
@@ -82,10 +82,10 @@ class Square:
             str: String representation of the square.
         """
         if self.__size != 0:
-            [print("") for p in range(0, self.__position[1])]
-        for p in range(0, self.__size):
-            [print(" ", end="") for q in range(0, self.__position[0])]
-            [print("#", end="") for r in range(0, self.__size)]
-            if p != self.__size - 1:
+            [print("") for i in range(0, self.__position[1])]
+        for i in range(0, self.__size):
+            [print(" ", end="") for j in range(0, self.__position[0])]
+            [print("#", end="") for k in range(0, self.__size)]
+            if i != self.__size - 1:
                 print("")
         return ("")
