@@ -32,7 +32,7 @@ void print_python_float(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-    Py_ssize_t size = 0, n = 0;
+    Py_ssize_t size = 0, i = 0;
     char *string = NULL;
 
     fflush(stdout);
@@ -51,10 +51,10 @@ void print_python_bytes(PyObject *p)
     printf("  trying string: %s\n", string);
     printf("  first %zd bytes:", size < 10 ? size : 10);
     
-    while (n < size && n < 10)
+    while (i < size && i < 10)
     {
         printf(" %02hhx", string[i]);
-        n++;
+        i++;
     }
     
     printf("\n");
@@ -68,7 +68,7 @@ void print_python_bytes(PyObject *p)
 void print_python_list(PyObject *p)
 {
     Py_ssize_t size = 0;
-    int n = 0;
+    int i = 0;
 
     fflush(stdout);
     printf("[*] Python list info\n");
@@ -77,20 +77,19 @@ void print_python_list(PyObject *p)
     {
         size = PyList_GET_SIZE(p);
         printf("[*] Size of the Python List = %zd\n", size);
-
         printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
         
-        while (n < size)
+        while (i < size)
         {
-            PyObject *item = PyList_GET_ITEM(p, n);
-            printf("Element %d: %s\n", n, Py_TYPE(item)->tp_name);
+            PyObject *item = PyList_GET_ITEM(p, i);
+            printf("Element %d: %s\n", i, Py_TYPE(item)->tp_name);
             
             if (PyBytes_Check(item))
                 print_python_bytes(item);
             else if (PyFloat_Check(item))
                 print_python_float(item);
             
-            n++;
+            i++;
         }
     }
     else
