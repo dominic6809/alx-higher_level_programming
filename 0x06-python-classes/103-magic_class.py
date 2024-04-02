@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-MagicClass module matching exactly a bytecode 
+MagicClass module matching exactly a bytecode
 """
 
 import math
