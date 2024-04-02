@@ -48,8 +48,6 @@ class Square:
     @size.setter
     def size(self, value):
          """
-        Setter method for size attribute.
-
         params:
             value (int): Size of the square.
 
