@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""
-Class to define a square.
-"""
+"""Class to define a square"""
 
 
 class Square:
+    """square."""
+
     def __init__(self, size=0, position=(0, 0)):
         """Initialize a new square.
 
         params:
-            size (int): Size of the square (default is 0)
+            size (int): The size of the new square.
             position (tuple): The position of the new square.
         """
         self.size = size
@@ -17,23 +17,11 @@ class Square:
 
     @property
     def size(self):
-        """Retrieves the current size of the square.
-        Returns:
-            int: Size of the square.
-        """
+        """Get/set the current size of the square."""
         return (self.__size)
 
     @size.setter
     def size(self, value):
-        """Sets the size of the square.
-
-        params:
-            value (int): Size value to set.
-
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is less than 0.
-        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -42,19 +30,10 @@ class Square:
 
     @property
     def position(self):
-        """Returns tuple position of the square."""
         return (self.__position)
 
     @position.setter
     def position(self, value):
-        """Sets the position of the square.
-
-        params:
-            value (tuple): Position value to set.
-
-        Raises:
-            TypeError: If value is not a tuple of 2 positive integers.
-        """
         if (not isinstance(value, tuple) or
                 len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or
@@ -63,7 +42,6 @@ class Square:
         self.__position = value
 
     def area(self):
-        """Return int: Area of the square."""
         return (self.__size ** 2)
 
     def my_print(self):
