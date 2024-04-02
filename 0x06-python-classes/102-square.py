@@ -109,7 +109,7 @@ class Square:
         """
         return self.size >= other.size
 
-     def __gt__(self, other):
+    def __gt__(self, other):
         """
         Greater than comparator.
 
