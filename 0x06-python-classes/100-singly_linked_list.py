@@ -73,27 +73,29 @@ class SinglyLinkedList:
             value: Data value of the new node to be inserted.
         """
         new_node = Node(value)
-        if self.head is None or self.head.data >= value:
-            new_node.next_node = self.head
-            self.head = new_node
+        if self.__head is None:
+            new_node.next_node = None
+            self.__head = new_node
+        elif self.__head.data > value:
+            new_node.next_node = self.__head
+            self.__head = new_node
         else:
-            current = self.head
-            while current.next_node is not None and
-            current.next_node.data < value:
-                current = current.next_node
-            new_node.next_node = current.next_node
-            current.next_node = new_node
+            num = self.__head
+            while (num.next_node is not None and
+                    num.next_node.data < value):
+                num = num.next_node
+            new.next_node = num.next_node
+            num.next_node = new_node
 
     def __str__(self):
-        """
-        String representation of the entire linked list.
+        """String representation of the entire linked list.
 
         Returns:
             str: String representation of the linked list.
         """
-        result = ""
-        current = self.head
-        while current:
-            result += str(current.data) + "\n"
-            current = current.next_node
-        return result
+        values = []
+        num = self.__head
+        while num is not None:
+            values.append(str(num.data))
+            num = num.next_node
+        return ('\n'.join(values))
