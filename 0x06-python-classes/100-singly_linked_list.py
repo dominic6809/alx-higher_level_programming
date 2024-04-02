@@ -63,7 +63,7 @@ class SinglyLinkedList:
         """
         Initializes a singly linked list with head node = None.
         """
-        self.head = None
+        self.__head = None
 
     def sorted_insert(self, value):
         """Inserts a new Node into the correct sorted position
