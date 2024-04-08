@@ -7,7 +7,19 @@ Nqueens class module
 import sys
 
 
-def is_safe(board, row, col, n):
+def is_safe(board, row, col, N):
+    """
+    Check if it's safe to place a queen at position on the board.
+
+    params:
+        board (list): The current state of the chessboard.
+        row (int): The row to check.
+        col (int): The column to check.
+        N (int): The size of the chessboard.
+
+    Returns:
+        bool: True if it's safe to place a queen, False otherwise.
+    """
     # Check if there is a queen in the same column
     for i in range(row):
         if board[i][col] == 1:
@@ -19,41 +31,52 @@ def is_safe(board, row, col, n):
             return False
 
     # Check upper right diagonal
-    for i, j in zip(range(row, -1, -1), range(col, n)):
+    for i, j in zip(range(row, -1, -1), range(col, N)):
         if board[i][j] == 1:
             return False
 
     return True
 
 
-def solve_n_queens_util(board, row, n):
-    if row == n:
-        for i in range(n):
-            for j in range(n):
-                print("Q", end=" ") if board[i][j] == 1
-                else print(".", end=" ")
-            print()
-        print()
-        return
+def solve_n_queens(N):
+    """
+    Solve the N queens problem.
 
-    for col in range(n):
-        if is_safe(board, row, col, n):
-            board[row][col] = 1
-            solve_n_queens_util(board, row + 1, n)
-            board[row][col] = 0
-
-
-def solve_n_queens(n):
-    if not isinstance(n, int):
-        print("N must be a number")
-        sys.exit(1)
-
-    if n < 4:
+    params:
+        n (int): The size of the chessboard.
+    """
+    if N < 4:
         print("N must be at least 4")
         sys.exit(1)
 
-    board = [[0 for _ in range(n)] for _ in range(n)]
-    solve_n_queens_util(board, 0, n)
+    board = [[0 for _ in range(N)] for _ in range(N)]
+    solutions = []
+
+
+def solve(board, row):
+    """
+    function to solve the N queens problem recursively.
+
+    params:
+        board (list): The current state of the chessboard.
+        row (int): The current row to place the queen.
+        N (int): The size of the chessboard.
+    """
+    if row == N:
+        solutions.append(board[:])
+        return
+    for col in range(N):
+        if is_safe(board, row, col, N):
+            board[row][col] = 1
+            solve(board, row + 1)
+            board[row][col] = 0
+
+    solve(board, 0)
+
+    for solution in solutions:
+        for row in solution:
+            print(" ".join(["Q" if cell == 1 else "." for cell in row]))
+        print()
 
 
 if __name__ == "__main__":
@@ -62,8 +85,13 @@ if __name__ == "__main__":
         sys.exit(1)
 
     try:
-        n = int(sys.argv[1])
-        solve_n_queens(n)
+        N = int(sys.argv[1])
     except ValueError:
         print("N must be a number")
         sys.exit(1)
+
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+
+    solve_n_queens(N)
