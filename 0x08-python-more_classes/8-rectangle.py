@@ -106,10 +106,10 @@ class Rectangle:
             rect_2: The second rectangle.
 
         Raises:
-            TypeError: If either rect_1 or rect_2 is not an instance of Rectangle.
+            TypeError: If rect_1 or rect_2 is not an instance of Rectangle.
 
         Returns:
-            Rectangle: rectangle with the larger area, or rect_1 (have the same area)
+            Rectangle: rectangle with larger area, or rect_1 (same area)
         """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
