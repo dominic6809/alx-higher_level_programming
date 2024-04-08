@@ -6,20 +6,7 @@ Nqueens class module
 
 import sys
 
-
-def is_safe(board, row, col, R):
-    """
-    Checks If addition is safe
-
-    Args:
-        row (int): row
-        col (int): col
-        board (list): board
-        R (int): R
-
-    Returns:
-        boolean: True if safe False if not
-    """
+def is_safe(board, row, col, n):
     # Check if there is a queen in the same column
     for i in range(row):
         if board[i][col] == 1:
@@ -31,66 +18,47 @@ def is_safe(board, row, col, R):
             return False
 
     # Check upper right diagonal
-    for i, j in zip(range(row, -1, -1), range(col, R)):
+    for i, j in zip(range(row, -1, -1), range(col, n)):
         if board[i][j] == 1:
             return False
 
     return True
 
-
-def solve_n_queens(R):
-    """
-    Recursive function to solve NQueens
-
-    params:
-        R (int): R
-    """
-    if R < 4:
-        print("R must be at least 4")
-        sys.exit(1)
-
-    board = [[0 for _ in range(R)] for _ in range(R)]
-    solutions = []
-
-
-def solve(board, row):
-    """
-    Add solution to results
-
-    params:
-        board (list): board
-        row (list): row
-    """
-    if row == R:
-        solutions.append(board[:])
+def solve_n_queens_util(board, row, n):
+    if row == n:
+        for i in range(n):
+            for j in range(n):
+                print("Q", end=" ") if board[i][j] == 1 else print(".", end=" ")
+            print()
+        print()
         return
-    for col in range(R):
-        if is_safe(board, row, col, R):
+
+    for col in range(n):
+        if is_safe(board, row, col, n):
             board[row][col] = 1
-            solve(board, row + 1)
+            solve_n_queens_util(board, row + 1, n)
             board[row][col] = 0
 
-    solve(board, 0)
+def solve_n_queens(n):
+    if not isinstance(n, int):
+        print("N must be a number")
+        sys.exit(1)
 
-    for solution in solutions:
-        for row in solution:
-            print(" ".join(["Q" if cell == 1 else "." for cell in row]))
-        print()
+    if n < 4:
+        print("N must be at least 4")
+        sys.exit(1)
 
+    board = [[0 for _ in range(n)] for _ in range(n)]
+    solve_n_queens_util(board, 0, n)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: nqueens R")
+        print("Usage: nqueens N")
         sys.exit(1)
 
     try:
-        R = int(sys.argv[1])
+        n = int(sys.argv[1])
+        solve_n_queens(n)
     except ValueError:
-        print("R must be a number")
+        print("N must be a number")
         sys.exit(1)
-
-    if R < 4:
-        print("R must be at least 4")
-        sys.exit(1)
-
-    solve_n_queens(R)
