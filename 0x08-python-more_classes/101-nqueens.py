@@ -6,6 +6,7 @@ Nqueens class module
 
 import sys
 
+
 def is_safe(board, row, col, n):
     # Check if there is a queen in the same column
     for i in range(row):
@@ -28,7 +29,8 @@ def solve_n_queens_util(board, row, n):
     if row == n:
         for i in range(n):
             for j in range(n):
-                print("Q", end=" ") if board[i][j] == 1 else print(".", end=" ")
+                print("Q", end=" ") if board[i][j] == 1
+                else print(".", end=" ")
             print()
         print()
         return
@@ -50,6 +52,7 @@ def solve_n_queens(n):
 
     board = [[0 for _ in range(n)] for _ in range(n)]
     solve_n_queens_util(board, 0, n)
+    
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
