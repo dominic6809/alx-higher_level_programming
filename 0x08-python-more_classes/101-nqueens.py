@@ -42,6 +42,7 @@ def solve_n_queens_util(board, row, n):
             solve_n_queens_util(board, row + 1, n)
             board[row][col] = 0
 
+
 def solve_n_queens(n):
     if not isinstance(n, int):
         print("N must be a number")
