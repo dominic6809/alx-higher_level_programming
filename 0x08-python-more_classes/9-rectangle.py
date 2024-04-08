@@ -81,12 +81,13 @@ class Rectangle:
         """
         Returns a string representation of the rectangle.
         """
-        if self.width == 0 or self.height == 0:
+        if self.__width == 0 or self.__height == 0:
             return ""
-        else:
-            return '\n'.join([str(self.print_symbol)
-                * self.width] * self.height)
-
+        rectangle_str = ""
+        for _ in range(self.__height):
+            rectangle_str += str(self.print_symbol) * self.__width + "\n"
+        return rectangle_str.rstrip()
+        
     def __repr__(self):
         """
         Returns a string representation of the rectangle to recreate it.
