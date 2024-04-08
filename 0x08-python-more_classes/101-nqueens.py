@@ -54,7 +54,7 @@ def solve_n_queens(n):
 
     board = [[0 for _ in range(n)] for _ in range(n)]
     solve_n_queens_util(board, 0, n)
-    
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
