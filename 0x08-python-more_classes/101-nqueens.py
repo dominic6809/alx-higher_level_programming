@@ -25,6 +25,7 @@ def is_safe(board, row, col, n):
 
     return True
 
+
 def solve_n_queens_util(board, row, n):
     if row == n:
         for i in range(n):
