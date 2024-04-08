@@ -9,39 +9,57 @@ import sys
 
 def is_safe(board, row, col, R):
     """
-    Check if it's safe to place a queen at position
+    Checks If addition is safe
 
-    params:
-        board (list): The current state of the chessboard.
-        row (int): The row to check.
-        col (int): The column to check.
-        R (int): The size of the chessboard.
+    Args:
+        row (int): row
+        col (int): col
+        board (list): board
+        R (int): R
 
     Returns:
-        bool: True if it's safe to place a queen, False elsewhere.
+        boolean: True if safe False if not
     """
+    # Check if there is a queen in the same column
     for i in range(row):
         if board[i][col] == 1:
             return False
 
+    # Check upper left diagonal
     for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
         if board[i][j] == 1:
             return False
 
+    # Check upper right diagonal
     for i, j in zip(range(row, -1, -1), range(col, R)):
         if board[i][j] == 1:
             return False
 
     return True
 
-def solve(board, row):
+
+def solve_n_queens(R):
     """
-    function to solve the N queens problem recursively.
+    Recursive function to solve NQueens
 
     params:
-        board (list): The current state of the chessboard.
-        row (int): The current row to place the queen.
-        R (int): The size of the chessboard.
+        R (int): R
+    """
+    if R < 4:
+        print("R must be at least 4")
+        sys.exit(1)
+
+    board = [[0 for _ in range(R)] for _ in range(R)]
+    solutions = []
+
+
+def solve(board, row):
+    """
+    Add solution to results
+
+    params:
+        board (list): board
+        row (list): row
     """
     if row == R:
         solutions.append(board[:])
@@ -59,19 +77,6 @@ def solve(board, row):
             print(" ".join(["Q" if cell == 1 else "." for cell in row]))
         print()
 
-def solve_n_queens(R):
-    """
-    Solve the N queens problem.
-
-    params:
-        R (int): The size of the chessboard.
-    """
-    if R < 4:
-        print("R must be at least 4")
-        sys.exit(1)
-
-    board = [[0 for _ in range(R)] for _ in range(R)]
-    solutions = []
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
