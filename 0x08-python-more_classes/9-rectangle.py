@@ -87,7 +87,7 @@ class Rectangle:
         for _ in range(self.__height):
             rectangle_str += str(self.print_symbol) * self.__width + "\n"
         return rectangle_str.rstrip()
-        
+
     def __repr__(self):
         """
         Returns a string representation of the rectangle to recreate it.
