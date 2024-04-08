@@ -1,5 +1,11 @@
 #!/usr/bin/python3
+"""
+Nqueens class module
+"""
+
+
 import sys
+
 
 def is_safe(board, row, col, R):
     """
@@ -28,7 +34,7 @@ def is_safe(board, row, col, R):
 
     return True
 
-def solve_n_queens_util(board, row, R):
+def solve(board, row):
     """
     function to solve the N queens problem recursively.
 
@@ -38,19 +44,20 @@ def solve_n_queens_util(board, row, R):
         R (int): The size of the chessboard.
     """
     if row == R:
-        # Print the board
-        for i in range(R):
-            for j in range(R):
-                print("Q", end=" ") if board[i][j] == 1 else print(".", end=" ")
-            print()
-        print()
+        solutions.append(board[:])
         return
-
     for col in range(R):
         if is_safe(board, row, col, R):
             board[row][col] = 1
-            solve_n_queens_util(board, row + 1, R)
+            solve(board, row + 1)
             board[row][col] = 0
+
+    solve(board, 0)
+
+    for solution in solutions:
+        for row in solution:
+            print(" ".join(["Q" if cell == 1 else "." for cell in row]))
+        print()
 
 def solve_n_queens(R):
     """
@@ -59,25 +66,26 @@ def solve_n_queens(R):
     params:
         R (int): The size of the chessboard.
     """
-    if not isinstance(R, int):
-        print("N must be a number")
-        sys.exit(1)
-
     if R < 4:
-        print("N must be at least 4")
+        print("R must be at least 4")
         sys.exit(1)
 
     board = [[0 for _ in range(R)] for _ in range(R)]
-    solve_n_queens_util(board, 0, R)
+    solutions = []
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: nqueens N")
+        print("Usage: nqueens R")
         sys.exit(1)
 
     try:
         R = int(sys.argv[1])
-        solve_n_queens(R)
     except ValueError:
-        print("N must be a number")
+        print("R must be a number")
         sys.exit(1)
+
+    if R < 4:
+        print("R must be at least 4")
+        sys.exit(1)
+
+    solve_n_queens(R)
