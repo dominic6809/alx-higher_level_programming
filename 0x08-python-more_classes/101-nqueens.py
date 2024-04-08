@@ -6,11 +6,12 @@ nqueens class module
 
 import sys
 
+
 def is_safe(board, row, col):
     """
     Check if it's safe to place a queen at position on the board.
 
-    paramss:
+    params:
         board (list): The current state of the chessboard.
         row (int): The row to check.
         col (int): The column to check.
@@ -30,6 +31,7 @@ def is_safe(board, row, col):
 
     return True
 
+
 def solve_nqueens(N, board, row=0):
     """
     Solve the N queens problem.
@@ -46,6 +48,7 @@ def solve_nqueens(N, board, row=0):
         if is_safe(board, row, col):
             board[row] = col
             solve_nqueens(N, board, row+1)
+
 
 if __name__ == "__main__":
     # Check the command-line arguments
