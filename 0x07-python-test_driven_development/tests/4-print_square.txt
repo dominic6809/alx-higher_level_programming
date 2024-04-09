@@ -1,0 +1,77 @@
+Import module:
+==============
+    >>> print_square = __import__('4-print_square').print_square
+
+
+Function:
+=========
+print a square with the character '#'.
+
+ * size is the size length of the square.
+
+ * size must be an integer, otherwise raise a TypeError exception
+ with the message 'size must be an integer'.
+
+ * if size is less than 0, raise a ValueError exception
+ with the message 'size must be >= 0'
+
+ * if size is a float and is less than 0, raise a TypeError exception
+ with the message 'size must be an integer'
+
+Test cases:
+===========
+# test case without parameters
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+
+# test case with a zero as parameter
+    >>> print_square(0)
+
+# test case with a valid integer parameter
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+
+# test case with a 'big' valid integer parameter
+    >>> print_square(12)
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+    ###############
+
+# test case with a infinite float parameter
+
+    >>> print_square(1e400)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+# test case with a infinite negative float parameter
+
+    >>> print_square(-1e400)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+# test case with a string as parameter
+    >>> print_square('My name')
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+# test case with a negative integer parameter
+    >>> print_square(-4)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
