@@ -1,0 +1,45 @@
+Import module:
+==============
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test Cases:
+===========
+# test case without parameters
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+# test case with a short text
+    >>> text_indentation('Hi welcome')
+    Hi welcome
+
+# test case with an integer parameter
+    >>> text_indentation(15)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# test case with a data type parameter
+    >>> text_indentation(str)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# test case with a boolean parameter
+    >>> text_indentation(True)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# test case with a text with a special format
+    >>> text_indentation("""Hello world. \
+    ... Is Python cool? \
+    ... It is""")
+    Hello world.
+    <BLANKLINE>
+    Is Python cool?
+    <BLANKLINE>
+    It is
+
+# test case with an infinite float number
+    >>> text_indentation(1e400)
+    Traceback (most recent call last):
+    TypeError: text must be a string
