@@ -7,57 +7,45 @@ unittest class module
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
-
 class TestMaxInteger(unittest.TestCase):
-    """Test cases for the max_integer function."""
+    """Test for max integer"""
 
-    def test_empty_list(self):
-        """Test case for an empty list."""
-        self.assertIsNone(max_integer([]))
+    def test_basic_check(self):
+        """Basic Check"""
+        self.assertEqual(max_integer([5, 30, 74]), 74)
 
-    def test_single_element_list(self):
-        """Test case for a list with a single element."""
-        self.assertEqual(max_integer([5]), 5)
+    def test_the_same_check(self):
+        """Test the same numbers"""
+        self.assertEqual(max_integer([5, 5, 5]), 5)
 
-    def test_positive_integers(self):
-        """Test case for a list of positive integers."""
-        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
+    def test_begin_check(self):
+        """Test the beginning numbers"""
+        self.assertEqual(max_integer([180, 3, 7]), 180)
 
-    def test_negative_integers(self):
-        """Test case for a list of negative integers."""
-        self.assertEqual(max_integer([-3, -4, -5, -6]), -3)
+    def test_middle_check(self):
+        """Test the middle numbers"""
+        self.assertEqual(max_integer([7, 63, 7]), 63)
 
-    def test_mixed_integers(self):
-        """
-        Test case for list of mixed positive & negative integers.
-        """
-        self.assertEqual(max_integer([-2, 2, -5, 7]), 7)
+    def test_one_neg_check(self):
+        """Test one negative numbers"""
+        self.assertEqual(max_integer([6, 83, -33]), 83)
 
-    def test_floats(self):
-        """Test case for a list of floats."""
-        self.assertEqual(max_integer([1.5, 2.3, 6.7]), 6.7)
+    def test_neg_check(self):
+        """Test only negative numbers"""
+        self.assertEqual(max_integer([-6, -83, -33]), -6)
 
-    def test_mixed_floats(self):
-        """
-        Test case for a list of mixed positive and negative floats.
-        """
-        self.assertEqual(max_integer([-1.5, 4.3, -3.7]), 4.3)
+    def test_one_check(self):
+        """Test only one number"""
+        self.assertEqual(max_integer([-5]), -5)
 
-    def test_strings(self):
-        """Test case for a list of strings."""
-        self.assertEqual(max_integer(["apple", "banana", "lemon"]), "lemon")
+    def test_empty_check(self):
+        """Test empty list"""
+        self.assertFalse(max_integer([]))
 
-    def test_mixed_types(self):
-        """Test case for a list of mixed types."""
-        self.assertEqual(max_integer([1, "apple", 4.3]), 4.3)
-
-    def test_empty_nested_lists(self):
-        """Test case for a list of empty nested lists."""
-        self.assertIsNone(max_integer([[], [], []]))
-
-    def test_nested_lists(self):
-        """Test case for a list of nested lists."""
-        self.assertEqual(max_integer([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), 9)
+    def test_non_integer_check(self):
+        """Test list with non integer elements"""
+        with self.assertRaises(TypeError):
+            max_integer([23, "23", 233])
 
 
 if __name__ == '__main__':
