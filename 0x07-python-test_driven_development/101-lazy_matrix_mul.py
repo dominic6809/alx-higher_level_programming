@@ -4,9 +4,6 @@ matrix multiply module using numpy
 """
 
 
-import numpy as np
-
-
 def lazy_matrix_mul(m_a, m_b):
     """
     function to Multiply two matrices using NumPy.
@@ -24,6 +21,10 @@ def lazy_matrix_mul(m_a, m_b):
         TypeError: If either m_a or m_b contains non-integer/float elements
         ValueError: If m_a or m_b is empty or can't be multiplied.
     """
+    
+    import numpy as np
+
+    
     # Validate m_a
     for row in m_a:
         for obj in row:
