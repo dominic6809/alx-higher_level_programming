@@ -35,6 +35,6 @@ def text_indentation(text):
         try:
             while letter_result[0] is " ":
                 letter_result = letter_result[1:]
-        except:
+        except IndexError:
             pass
         print(letter_result, end="")
