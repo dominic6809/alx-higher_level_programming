@@ -23,25 +23,31 @@ def lazy_matrix_mul(m_a, m_b):
     """
     import numpy as np
 
-    # Validate m_a
+    # Check if m_a and m_b are lists of lists
+    if not all(isinstance(row, list) for row in m_a) or
+        not all(isinstance(row, list) for row in m_b):
+        raise TypeError("m_a and m_b must be lists of lists")
+
+    # Check if m_a and m_b are non-empty
+    if not m_a or not m_b:
+        raise ValueError("m_a and m_b cannot be empty")
+
     for row in m_a:
-        for obj in row:
-            if (not isinstance(obj, int) and not isinstance(obj, float)):
-                raise TypeError("m_a should contain only integers or floats")
-        if len(m_a[0]) != len(row):
+        if not all(isinstance(elem, (int, float)) for elem in row):
+            raise TypeError("m_a should contain only integers or floats")
+        if len(row) != len(m_a[0]):
             raise TypeError("each row of m_a must be of the same size")
 
-    # Validate m_b
     for row in m_b:
-        for obj in row:
-            if (not isinstance(obj, int) and not isinstance(obj, float)):
-                raise TypeError("m_b should contain only integers or floats")
-            if len(m_b[0]) != len(row):
-                raise TypeError("each row of m_b must be of the same size")
+        if not all(isinstance(elem, (int, float)) for elem in row):
+            raise TypeError("m_b should contain only integers or floats")
+        if len(row) != len(m_b[0]):
+            raise TypeError("each row of m_b must be of the same size")
 
-    """if len(m_a[0]) != len(m_b):
-        raise ValueError("m_a and m_b can't be multiplied")
-    """
+    # Check if number of columns in m_a matches number of rows in m_b
+    if len(m_a[0]) != len(m_b):
+        raise ValueError("m_a and m_b cannot be multiplied")
+
     A = np.asmatrix(m_a)
     B = np.asmatrix(m_b)
     C = A.dot(B)
