@@ -54,19 +54,19 @@ def matrix_mul(m_a, m_b):
 
     inverted_b = []
     for r in range(len(m_b[0])):
-        new_row = []
+        new_r = []
         for c in range(len(m_b)):
-            new_row.append(m_b[c][r])
-        inverted_b.append(new_row)
+            new_r.append(m_b[c][r])
+        inverted_b.append(new_r)
 
     new_matrix = []
     for row in m_a:
-        new_row = []
+        new_r = []
         for col in inverted_b:
             prod = 0
             for i in range(len(inverted_b[0])):
                 prod += row[i] * col[i]
-            new_row.append(prod)
-        new_matrix.append(new_row)
+            new_r.append(prod)
+        new_matrix.append(new_r)
 
     return new_matrix
