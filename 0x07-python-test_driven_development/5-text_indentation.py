@@ -17,13 +17,13 @@ def text_indentation(text):
     # Check if text is a string
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    
+
     letter_result = ""
-    
+
     for letter in text:
         letter_result += letter
         if letter in (".", "?", ":"):
             letter_result += "\n\n"
-    
+
     # Print the processed text
     print(letter_result.rstrip())
