@@ -5,7 +5,7 @@ unittest class module
 
 
 def max_integer(list=[]):
-    """A function to find and return the max integer in a list of integers
+    """function to find and return the max integer in list of integers
         If the list is empty, the function returns None
     """
     if len(list) == 0:
