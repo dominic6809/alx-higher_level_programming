@@ -1,51 +1,47 @@
-========================
-add_integer module
-========================
-
-Module import:
+Import module:
 ==============
 	>>> add_integer = __import__('0-add_integer').add_integer
 
 Operations:
 ===========
-c and d must be ints or floats otherwise a TypeError exception 
-will be expressed
+a and b must be ints or floats otherwise a TypeError exception 
+will be raised
 
 Test cases:
 ===========
-#: two integers
->>> add_integer(6, 7)
-13
+#0: two integers
+>>> add_integer(1, 2)
+3
 
 # negative ints
->>> add_integer(-4, 2)
--2
+>>> add_integer(-1, 1)
+0
 
 # two negative ints
->>> add_integer(-4, -3)
--7
+>>> add_integer(-1, -1)
+-2
 
 # A test case between integer and infinity float
->>> add_integer(4, 1e400)
+>>> add_integer(5, 1e400)
 Traceback (most recent call last):
 OverflowError: cannot convert float infinity to integer
 
 # A test case for an argument with no assigned value
->>> add_integer(d, 1)
+>>> add_integer(a, 1)
 Traceback (most recent call last):
-NameError: name 'd' is not defined
+NameError: name 'a' is not defined
 
 # no parameters
 >>> add_integer()
 Traceback (most recent call last):
-TypeError: add_integer() missing 1 required positional argument: 'd'
+TypeError: add_integer() missing 1 required positional argument: 'a'
 
-# test case for using the default value of parameter 'c'
+# test case for using the default value of parameter 'b'
 >>> add_integer(2)
 100
 
-# test case for using the default value of parameter 'c'
-with the float parameter 'd'
+# test case for using the default value of parameter 'b'
+with the float parameter 'a'
 
 >>> add_integer(1.0, )
 99
