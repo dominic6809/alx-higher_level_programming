@@ -20,10 +20,21 @@ def text_indentation(text):
 
     letter_result = ""
 
-    for letter in text:
-        letter_result += letter
-        if letter in (".", "?", ":"):
-            letter_result += "\n\n"
+    if len(text) is 0:
+        return
 
-    # Print the processed text
-    print(letter_result.rstrip())
+    for char in text:
+        letter_result += char
+        if char in ["?", ":", "."]:
+            while letter_result[0] is " ":
+                letter_result = letter_result[1:]
+            print(letter_result)
+            print()
+            letter_result = ""
+    if len(letter_result) != 0:
+        try:
+            while letter_result[0] is " ":
+                letter_result = letter_result[1:]
+        except:
+            pass
+        print(letter_result, end="")
