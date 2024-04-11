@@ -1,10 +1,12 @@
-Import module:
-=============
-        >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+============================
+100-matrix_mul.py
+============================
 
-Definition:
-==========
-``matrix_mul(m_a, m_b)``.
+The module defines a matrix multiplication function ``matrix_mul(m_a, m_b)``.
+
+import module:
+==============
+        >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
 
 Usage
 =====
