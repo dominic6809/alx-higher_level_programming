@@ -41,7 +41,7 @@ def lazy_matrix_mul(m_a, m_b):
             if (not isinstance(val, int) and not isinstance(val, float)):
                 raise TypeError("m_a should contain only integers or floats")
         if len(m_a[0]) != len(row):
-                raise TypeError("each row of m_a must be of the same size")
+            raise TypeError("each row of m_a must be of the same size")
 
     # validate m_b
     for row in m_b:
