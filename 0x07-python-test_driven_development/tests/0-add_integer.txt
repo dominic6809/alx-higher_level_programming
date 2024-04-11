@@ -2,7 +2,7 @@
 0-add_integer.py
 ===========================
 
-It defines an integer addition function ``add_integer(a, b=98)``.
+The module defines an integer addition function ``add_integer(a, b=98)``.
 
 Usage
 =====
