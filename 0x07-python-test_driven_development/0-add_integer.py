@@ -12,7 +12,7 @@ def add_integer(a, b=98):
     params:
         a (int or float): First integer or float.
         b (int or float): Second integer or float. Defaults to 98.
-        
+
     Raises:
         TypeError: If a or b is not an integer or float.
     """
