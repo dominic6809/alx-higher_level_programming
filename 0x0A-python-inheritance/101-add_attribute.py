@@ -4,7 +4,7 @@ function to Define a function that adds attributes to objects.
 """
 
 
-def add_attribute(obj, attr, value):
+def add_attribute(obj, attr_name, attr_value):
     """
     Add a new attribute to an object if it's possible.
 
@@ -16,6 +16,7 @@ def add_attribute(obj, attr, value):
     Raises:
     TypeError: If the object cannot have a new attribute.
     """
-    if not hasattr(obj, "__dict__"):
-        raise TypeError("can't add new attribute")
-    setattr(obj, att, value)
+    if isinstance(obj, dict):
+        obj[attr_name] = attr_value
+    else:
+        raise TypeError("can't add a new attribute")
