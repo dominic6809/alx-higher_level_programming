@@ -39,5 +39,5 @@ class Square(Rectangle):
         return area
 
     def __str__(self):
-      """Return the string representation of the square."""
-        return '[Square] ' + str(self.__size) + '/' + str(self.__size)
+        return ("[{}] {}/{}".format(type(self).__name__,
+                                    self.__size, self.__size))
