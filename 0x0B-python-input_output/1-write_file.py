@@ -1,24 +1,26 @@
 #!/usr/bin/python3
 """
-function to Define a text file-reading function.
+function to define a file-appending function.
 """
 
 
-def read_file(filename=""):
+def write_file(filename="", text=""):
     """
-    Reads the content of a text file and prints it to stdout.
+    Writes a string to a text file (UTF8) and
+    returns the number of characters written.
 
     params:
-        filename (str): The name of the file to read.
+        filename (str): The name of the file to write to.
+        text (str): The string to write to the file.
 
     Returns:
-        None
+        int: The number of characters written to the file.
     """
     # Check if filename is provided
     if not filename:
         print("Please provide a filename.")
-        return
+        return 0
 
-    with open(filename, 'r', encoding='utf-8') as file:
-        for line in file:
-            print(line, end='')
+    with open(filename, 'w', encoding='utf-8') as file:
+        file.write(text)
+    return len(text)
