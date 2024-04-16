@@ -6,32 +6,39 @@ function to define a class Student.
 
 class Student:
     """
-    Represent a student
+    student class module
     """
-
     def __init__(self, first_name, last_name, age):
+        """
+        instantation
+        """
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
         """
-        Retrieves a dictionary representation of a Student instance.
-        params:
-            attrs (list, optional): List of attribute names to retrieve.
-                                    Defaults to None.
-        Returns:
-            dict: Dictionary representation of the Student instance.
+        retrieves dictionary representation
         """
-        if attrs is not None and all(isinstance(attr, str) for attr in attrs):
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
-        return self.__dict__
+        my_list = self.__dict__
+        stringdict_ = dict()
+
+        if type(attrs) is list:
+            for attr in attrs:
+                if type(attr) is not str:
+                    return my_list
+
+                if attr in my_list:
+                    stringdict_[attr] = my_list[attr]
+
+            return stringdict_
+
+        return my_list
 
     def reload_from_json(self, json):
         """
-        Replaces all attributes of the Student instance.
-        params:
-            json (dict): Dictionary containing attribute-value pairs.
+        replaces all attributes of the student instance
         """
-        for key, value in json.items():
-            setattr(self, key, value)
+        for i in json:
+            if i in self.__dict__.keys():
+                self.__dict__[i] = json[i]
