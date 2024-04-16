@@ -6,17 +6,12 @@ function to define a class Student.
 
 class Student:
     """
-    Represents a student.
-
-    Attributes:
-        first_name (str): The first name of the student.
-        last_name (str): The last name of the student.
-        age (int): The age of the student.
+    Defines a student by first_name, last_name, and age.
     """
 
     def __init__(self, first_name, last_name, age):
-        """Initialize a new Student.
-
+        """
+        Initializes a Student instance with first_name, last_name, and age.
         params:
             first_name (str): The first name of the student.
             last_name (str): The last name of the student.
@@ -28,15 +23,12 @@ class Student:
 
     def to_json(self, attrs=None):
         """
-        Get a dictionary representation of the Student.
-
-        If attrs is a list of strings, represents only those attributes
-        included in the list.
-
+        Retrieves a dictionary representation of a Student instance.
         params:
-            attrs (list): (Optional) The attributes to represent.
+            attrs (list): A list of strings representing attribute names.
+        Returns:
+            dict: A dictionary containing specified attributes of the Student.
         """
-        if (type(attrs) == list and
-                all(type(ele) == str for ele in attrs)):
-            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        if attrs is not None and isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
+            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
         return self.__dict__
