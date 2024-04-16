@@ -6,7 +6,7 @@ function to define a class Student.
 
 class Student:
     """
-    Represents a student.
+    Represent a student
     """
 
     def __init__(self, first_name, last_name, age):
@@ -17,11 +17,9 @@ class Student:
     def to_json(self, attrs=None):
         """
         Retrieves a dictionary representation of a Student instance.
-
         params:
-            attrs (list): list of strings specifying which attributes to retrieve.
-                If None, all attributes will be retrieved.
-
+            attrs (list, optional): List of attribute names to retrieve.
+                                    Defaults to None.
         Returns:
             dict: Dictionary representation of the Student instance.
         """
@@ -30,5 +28,10 @@ class Student:
         return self.__dict__
 
     def reload_from_json(self, json):
+        """
+        Replaces all attributes of the Student instance.
+        params:
+            json (dict): Dictionary containing attribute-value pairs.
+        """
         for key, value in json.items():
             setattr(self, key, value)
