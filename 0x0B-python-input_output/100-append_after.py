@@ -18,15 +18,11 @@ def append_after(filename="", search_string="", new_string=""):
     Returns:
         None
     """
-    if not filename:
-        print("Please provide a filename.")
-        return
-
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-
-    with open(filename, 'w') as file:
-        for line in lines:
-            file.write(line)
+    my_lines = ""
+    with open(filename) as r:
+        for line in r:
+            my_lines += line
             if search_string in line:
-                file.write(new_string + '\n')
+                my_lines += new_string
+    with open(filename, "w") as w:
+        w.write(my_lines)
