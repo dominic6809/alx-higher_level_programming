@@ -4,23 +4,18 @@ function to define a file-appending function.
 """
 
 
-def write_file(filename="", text=""):
+def append_write(filename="", text=""):
     """
-    Writes a string to a text file (UTF8) and
-    returns the number of characters written.
+    Appends a string at the end of a text file (UTF8) and
+    returns the number of characters added.
 
     params:
-        filename (str): The name of the file to write to.
-        text (str): The string to write to the file.
+        filename (str): The name of the file to append to.
+        text (str): The string to append to the file.
 
     Returns:
-        int: The number of characters written to the file.
+        int: The number of characters added to the file.
     """
-    # Check if filename is provided
-    if not filename:
-        print("Please provide a filename.")
-        return 0
-
-    with open(filename, 'w', encoding='utf-8') as file:
-        file.write(text)
-    return len(text)
+    with open(filename, 'a', encoding="utf-8") as file:
+        line = file.write(text)
+    return line
