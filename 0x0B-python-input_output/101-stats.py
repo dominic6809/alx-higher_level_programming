@@ -4,38 +4,46 @@ Reads from standard input and computes metrics.
 """
 
 
-import sys
+def print_stats(size, status_codes):
+    print("File size: {}".format(size))
+    for key in sorted(status_codes):
+        print("{}: {}".format(key, status_codes[key]))
 
 
-def compute_metrics():
-    total_file_size = 0
-    status_code_counts =
-  {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+if __name__ == "__main__":
+    import sys
+
+    size = 0
+    status_codes = {}
+    valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
+    i = 0
 
     try:
-        for i, line in enumerate(sys.stdin, start=1):
-            parts = line.split()
-            if len(parts) >= 9:
-                status_code = int(parts[-2])
-                file_size = int(parts[-1])
-                
-                # Update metrics
-                total_file_size += file_size
-                if status_code in status_code_counts:
-                    status_code_counts[status_code] += 1
+        for line in sys.stdin:
+            if i == 10:
+                print_stats(size, status_codes)
+                i = 1
+            else:
+                i += 1
 
-            if i % 10 == 0:
-                print_statistics(total_file_size, status_code_counts)
+            line = line.split()
+
+            try:
+                size += int(line[-1])
+            except (IndexError, ValueError):
+                pass
+
+            try:
+                if line[-2] in valid_codes:
+                    if status_codes.get(line[-2], -1) == -1:
+                        status_codes[line[-2]] = 1
+                    else:
+                        status_codes[line[-2]] += 1
+            except IndexError:
+                pass
+
+        print_stats(size, status_codes)
 
     except KeyboardInterrupt:
-        print_statistics(total_file_size, status_code_counts)
-
-def print_statistics(total_file_size, status_code_counts):
-    print("Total file size:", total_file_size)
-
-    for status_code in sorted(status_code_counts.keys()):
-        count = status_code_counts[status_code]
-        if count > 0:
-            print(f"{status_code}: {count}")
-
-compute_metrics()
+        print_stats(size, status_codes)
+        raise
