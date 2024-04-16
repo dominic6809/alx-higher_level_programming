@@ -1,23 +1,55 @@
 #!/usr/bin/python3
-"""
-A python script that adds all arguments to a Python List.
-"""
-
-
 import sys
-save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-if __name__ == "__main__":
 
-    filename = "add_item.json"
+def print_info():
+    """
+    print info from a line
+    """
+    print('File size: {:d}'.format(file_size))
 
-    try:
-        my_list = load_from_json_file(filename)
-    except FileNotFoundError:
-        my_list = []
+    for scode, code_times in sorted(status_codes.items()):
+        if code_times > 0:
+            print('{}: {:d}'.format(scode, code_times))
 
-    for item in sys.argv[1:]:
-        my_list.append(item)
 
-    save_to_json_file(my_list, filename)
+status_codes = {
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
+
+lc = 0
+file_size = 0
+
+try:
+    for line in sys.stdin:
+        if lc != 0 and lc % 10 == 0:
+            print_info()
+
+        pieces = line.split()
+
+        try:
+            status = int(pieces[-2])
+
+            if str(status) in status_codes.keys():
+                status_codes[str(status)] += 1
+        except (ValueError, IndexError):
+            pass
+
+        try:
+            file_size += int(pieces[-1])
+        except (IndexError, ValueError):
+            pass
+
+        lc += 1
+
+    print_info()
+except KeyboardInterrupt:
+    print_info()
+    raise
