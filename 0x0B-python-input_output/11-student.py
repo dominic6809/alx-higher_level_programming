@@ -7,11 +7,6 @@ function to define a class Student.
 class Student:
     """
     Represents a student.
-
-    Attributes:
-        first_name (str): The first name of the student.
-        last_name (str): The last name of the student.
-        age (int): The age of the student.
     """
     def __init__(self, first_name, last_name, age):
         self.first_name = first_name
@@ -21,13 +16,6 @@ class Student:
     def to_json(self, attrs=None):
         """
         Retrieves a dictionary representation of a Student instance.
-
-        params:
-            attrs (list): list of strings specifying which attributes to retrieve.
-                If None, all attributes will be retrieved.
-
-        Returns:
-            dict: Dictionary representation of the Student instance.
         """
         my_list = self.__dict__
         stringdict_ = dict()
@@ -48,12 +36,6 @@ class Student:
         """
         Replaces all attributes of the Student instance
         based on a dictionary representation.
-
-        params:
-            json (dict): A dictionary containing attribute names and values.
-
-        Returns:
-            None
         """
         for i in json:
             if i in self.__dict__.keys():
