@@ -25,27 +25,10 @@ class Student:
         Returns:
             dict: Dictionary representation of the Student instance.
         """
-        if attrs is None:
-            return self.__dict__
-
-        json_dict = {}
-
-        for attr in attrs:
-            if hasattr(self, attr):
-                json_dict[attr] = getattr(self, attr)
-
-        return json_dict
+        if attrs is not None and all(isinstance(attr, str) for attr in attrs):
+            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+        return self.__dict__
 
     def reload_from_json(self, json):
-        """
-        Replaces all attributes of the Student instance
-        based on a dictionary representation.
-
-        params:
-            json (dict): A dictionary containing attribute names and values.
-
-        Returns:
-            None
-        """
         for key, value in json.items():
             setattr(self, key, value)
