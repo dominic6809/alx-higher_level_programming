@@ -7,6 +7,7 @@ from models.square import Square
 import unittest
 import pep8
 
+
 class TestSquare(unittest.TestCase):
     """A class to test the Square Class."""
     def test_pep8_base(self):
@@ -104,6 +105,7 @@ class TestSquare(unittest.TestCase):
         s1_dictionary = s1.to_dictionary()
         expected = {'id': 5, 'x': 5, 'size': 5, 'y': 5}
         self.assertEqual(s1_dictionary, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
