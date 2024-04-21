@@ -11,8 +11,7 @@ import json
 
 class Base:
     """
-    Base class for managing unique IDs.
-    
+    Base class for managing unique IDs
     Attributes:
         __nb_objects (int): Private class attribute to keep track of objects.
         id (int): Public instance attribute representing the object's ID.
@@ -23,7 +22,6 @@ class Base:
     def __init__(self, id=None):
         """
         Initialize a new Base instance.
-        
         params:
             id (int): The ID. If none, a unique ID will be generated
         Returns:
@@ -39,7 +37,6 @@ class Base:
     def to_json_string(list_dictionaries):
         """
         Return the JSON serialization of a list of dicts.
-        
         params:
             list_dictionaries (list): List of dictionaries.
         Returns:
@@ -53,7 +50,6 @@ class Base:
     def save_to_file(cls, list_objs):
         """
         Write the JSON serialization of a list of objects to a file.
-        
         params:
             list_objs (list): List of instances.
         Returns:
@@ -71,7 +67,6 @@ class Base:
     def from_json_string(json_string):
         """
         Return the deserialization of a JSON string
-        
         params:
             json_string (str): JSON string representing a list of dictionaries.
         Returns:
@@ -85,7 +80,6 @@ class Base:
     def create(cls, **dictionary):
         """
         Return a class instantied from a dictionary of attribute
-        
         params:
             **dictionary: Double pointer to a dictionary.
         Returns:
@@ -118,8 +112,7 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """
-        Write the CSV serialization of a list of objects to a file.
-        
+        Write the CSV serialization of a list of objects to a file. 
         params:
             list_objs (list): List of objects to serialize.
         Returns:
@@ -139,7 +132,6 @@ class Base:
     def load_from_file_csv(cls):
         """
         Return a list of classes instantiated from a CSV file.
-        
         Returns:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
