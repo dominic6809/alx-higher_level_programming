@@ -3,6 +3,7 @@
 Base class
 """
 
+
 import csv
 import turtle
 import json
