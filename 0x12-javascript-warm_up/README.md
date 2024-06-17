@@ -22,4 +22,4 @@ Throughout this project, you will write scripts to perform various tasks, such a
 
 ## Author
 **Your Name**
-- GitHub: [YourGitHubUsername](https://github.com/YourGitHubUsername)
+- GitHub: [Dominic Musyoki](https://github.com/dominic6809)
