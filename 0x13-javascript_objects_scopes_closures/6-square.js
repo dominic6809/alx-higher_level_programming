@@ -10,6 +10,10 @@ If c is undefined, use the character X
 const Rectangle = require("./5-square");
 
 class Square extends Rectangle {
+  constructor (size) {
+    super(size, size);
+  }
+
   charPrint (c) {
     if (c === undefined) {
       c = 'X';
