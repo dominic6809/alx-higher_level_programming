@@ -6,24 +6,14 @@ class Square that defines a square and inherits from Square of 5-square.js:
 You must use the class notation for defining your class and extends
 Create an instance method called charPrint(c) that prints the rectangle using the character c
 If c is undefined, use the character X
- */
-const Rectangle = require("./5-square");
+*/
+const SquareS = require('./5-square');
 
-module.exports = class Square extends Rectangle {
-  constructor (size) {
-    super(size, size);
-  }
-
+class Square extends SquareS {
   charPrint (c) {
     if (c === undefined) {
       c = 'X';
     }
-
-    if (!this.width || !this.height) {
-      console.log('Invalid dimensions for the square.');
-      return;
-    }
-
     for (let i = 0; i < this.height; i++) {
       let r = '';
       for (let j = 0; j < this.width; j++) {
@@ -32,4 +22,6 @@ module.exports = class Square extends Rectangle {
       console.log(r);
     }
   }
-};
+}
+
+module.exports = Square;
