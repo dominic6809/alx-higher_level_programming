@@ -11,7 +11,7 @@ If w or h is equal to 0 or not a positive integer, create an empty object
 */
 class Rectangle {
   constructor (w, h) {
-    if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number' || !Number.isInteger(w) || !Number.isInteger(h)) {
+    if (typeof w === 'number' && typeof h === 'number' && w > 0 && h > 0) {
       return {};
     }
     this.width = w;
