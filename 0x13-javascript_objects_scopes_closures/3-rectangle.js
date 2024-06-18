@@ -10,13 +10,11 @@ Initialize the instance attribute height with the value of h
 If w or h is equal to 0 or not a positive integer, create an empty object
 Create an instance method called print() that prints the rectangle using the character X
 */
-class Rectangle {
+module.exports = class Rectangle {
   constructor (w, h) {
-    if ((w > 0 && h > 0)) {
+    if (typeof w === 'number' && typeof h === 'number' && w > 0 && h > 0) {
       this.width = w;
       this.height = h;
-    } else {
-      return {};
     }
   }
 
@@ -24,10 +22,14 @@ class Rectangle {
     if (!this.width || !this.height) {
       console.log('Invalid dimensions for rectangle.');
       return;
+    }
 
     for (let i = 0; i < this.height; i++) {
-      console.log('X'.repeat(this.width));
+      let r = '';
+      for (let j = 0; j < this.width; j++) {
+        r += 'X';
+      }
+      console.log(r);
     }
   }
-}
-module.exports = Rectangle;
+};
