@@ -9,7 +9,7 @@ If c is undefined, use the character X
  */
 const Rectangle = require("./5-square");
 
-class Square extends Rectangle {
+module.exports = class Square extends Rectangle {
   constructor (size) {
     super(size, size);
   }
@@ -20,7 +20,7 @@ class Square extends Rectangle {
     }
 
     if (!this.width || !this.height) {
-      console.log('Invalid dimensions.');
+      console.log('Invalid dimensions for the square.');
       return;
     }
 
@@ -32,6 +32,4 @@ class Square extends Rectangle {
       console.log(r);
     }
   }
-}
-
-module.exports = Square;
+};
