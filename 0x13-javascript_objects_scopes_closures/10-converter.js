@@ -7,5 +7,5 @@ Prototype: exports.converter = function (base)
 exports.converter = function (base) {
   return function (myNumber) {
     return myNumber.toString(base);
-  }
+  };
 };
