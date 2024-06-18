@@ -10,12 +10,22 @@ If c is undefined, use the character X
 const Square = require("./5-square");
 
 class Square extends Square {
-  charPrint(c) {
+  charPrint (c) {
     if (c === undefined) {
-      c = "X";
+      c = 'X';
     }
-    for (let i = 0; i < this.size; i++) {
-      console.log(c.repeat(this.size));
+
+    if (!this.width || !this.height) {
+      console.log('Invalid dimensions.');
+      return;
+    }
+
+    for (let i = 0; i < this.height; i++) {
+      let r = '';
+      for (let j = 0; j < this.width; j++) {
+        r += c;
+      }
+      console.log(r);
     }
   }
 }
