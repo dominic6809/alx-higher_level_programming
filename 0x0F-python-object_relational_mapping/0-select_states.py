@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 script lists all states from the
-database `hbtn_0e_0_usa`.
+database `hbtn_0e_0_usa`
 """
 
 import MySQLdb
