@@ -10,10 +10,11 @@ from sqlalchemy.orm import sessionmaker
 from sys import argv
 
 if __name__ == "__main__":
-    """Access to the database and get a state"""
+    """Access the database and get a state."""
 
     db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
-        argv[1], argv[2], argv[3])
+        argv[1], argv[2], argv[3]
+    )
 
     engine = create_engine(db_url)
     Session = sessionmaker(bind=engine)
