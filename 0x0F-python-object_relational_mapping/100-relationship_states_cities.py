@@ -13,7 +13,7 @@ from sys import argv
 if __name__ == "__main__":
     """
     Access to the database and get the cities
-    from the db
+    from the db.
     """
 
     db_urls = 'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
