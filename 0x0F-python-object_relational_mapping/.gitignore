@@ -1,0 +1,12 @@
+cat
+	venv/include/
+	venv/lib/python3.8/site-packages/MySQLdb/
+	venv/lib/python3.8/site-packages/SQLAlchemy-2.0.32.dist-info/
+	venv/lib/python3.8/site-packages/__pycache__/typing_extensions.cpython-38.pyc
+	venv/lib/python3.8/site-packages/greenlet-3.0.3.dist-info/
+	venv/lib/python3.8/site-packages/greenlet/
+	venv/lib/python3.8/site-packages/mysqlclient-2.2.4.dist-info/
+	venv/lib/python3.8/site-packages/sqlalchemy/
+	venv/lib/python3.8/site-packages/typing_extensions-4.12.2.dist-info/
+	venv/lib/python3.8/site-packages/typing_extensions.py
+
