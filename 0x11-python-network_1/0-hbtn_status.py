@@ -16,4 +16,3 @@ if __name__ == '__main__':
         print("\t- type: {}".format(type(body_content)))
         print("\t- content: {}".format(body_content))
         print("\t- utf8 content: {}".format(body_content.decode('utf-8')))
-      
